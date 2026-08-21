@@ -37,9 +37,9 @@ def read_listings(**kwargs):
         return pd.read_excel(LISTINGS, **kwargs)
     return pd.read_csv(LISTINGS, low_memory=False, **kwargs)
 
-# NOTE: "Calendar 2026.csv" is deliberately NOT referenced. Excel corrupted it:
-# truncated to 1,048,576 rows, mangled dates, and destroyed listing_id into
-# scientific notation. calendar.csv is the complete, uncorrupted export.
+# NOTE: use calendar.csv (the full, intact export). Never open it in Excel —
+# Excel truncates at 1,048,576 rows and mangles big listing_ids into scientific
+# notation. Always read listing_id as str.
 
 # --- Outputs (safe to delete / regenerate; git-ignored) ---
 OUT     = Path(__file__).resolve().parent.parent / "outputs"

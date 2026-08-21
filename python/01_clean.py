@@ -137,7 +137,7 @@ def clean_listings() -> pd.DataFrame:
 
 
 def summarize_calendar() -> tuple[pd.DataFrame, pd.DataFrame]:
-    # dtype=str on listing_id protects the huge IDs (the Calendar 2026.csv bug)
+    # dtype=str on listing_id protects the huge IDs from float/precision loss
     cal = pd.read_csv(C.CALENDAR_CSV, parse_dates=["date"],
                       dtype={"listing_id": str})
     cal["is_available"] = cal["available"].eq("t")

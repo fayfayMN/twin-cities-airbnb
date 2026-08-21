@@ -66,21 +66,20 @@ pipeline.
 
 ### ⚠️ Data traps found while profiling (the real lesson)
 
-1. **`Calendar 2026.csv` is Excel-corrupted — do not use.** Truncated to
-   1,048,576 rows (Excel's limit), dates mangled to `6/28/2026`, and `listing_id`
-   destroyed into scientific notation (`1.42032E+18`) — precision permanently
-   lost. `calendar.csv` is the intact export. **Never open these CSVs in Excel.**
-2. **The calendar has no price.** Price lives *only* in listings. You cannot
+1. **The calendar has no price.** Price lives *only* in listings. You cannot
    compute ADR/revenue from the calendar (a common outdated tutorial assumes you
    can). Use the calendar for **forward seasonality** instead.
-3. **Occupancy is already provided.** `estimated_occupancy_l365d` /
+2. **Occupancy is already provided.** `estimated_occupancy_l365d` /
    `estimated_revenue_l365d` ship in listings — no manual calendar math needed.
-4. **Calendar is forward-looking, not history.** `available='f'` = booked **or**
+3. **Calendar is forward-looking, not history.** `available='f'` = booked **or**
    host-blocked → calendar "occupancy" is an **upper bound**, call it *blocked*.
-5. **Neighborhoods are counties.** Hennepin = all of Minneapolis, Ramsey = St.
+4. **Neighborhoods are counties.** Hennepin = all of Minneapolis, Ramsey = St.
    Paul. You **cannot** do "North Loop vs Uptown" from this field — only county
    level, or lat/long clustering.
-6. **`instant_bookable` is 100% empty** in this export — don't build on it.
+5. **`instant_bookable` is 100% empty** in this export — don't build on it.
+6. **Don't open these CSVs in Excel.** Excel truncates at 1,048,576 rows and
+   mangles big `listing_id`s into scientific notation — process them only in
+   Python/R.
 
 ---
 
