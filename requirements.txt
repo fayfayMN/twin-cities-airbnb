@@ -1,10 +1,18 @@
-# Python track — install with:  pip install -r requirements.txt
+# Covers BOTH the Streamlit Host Optimizer (deploy) and the analysis pipeline.
+# Streamlit Community Cloud auto-installs this file at deploy time.
+
+# --- Host Optimizer dashboard (dashboard.py) ---
+streamlit>=1.40
+plotly>=5.20
 pandas>=2.0
-openpyxl>=3.1          # read listings.xlsx
+numpy>=1.24
+scikit-learn==1.9.0     # PINNED: the models in outputs/model/ were pickled with
+joblib>=1.3             # this version; a mismatch can break joblib.load at deploy
+statsmodels>=0.14       # lowess trendline
+
+# --- analysis pipeline (python/00_*..06_*.py) ---
+openpyxl>=3.1
 matplotlib>=3.7
 seaborn>=0.13
-folium>=0.16           # interactive maps (03_geo_map.py)
-vaderSentiment>=3.3    # review sentiment (04_review_nlp.py)
-
-# R track (install inside R, not pip):
-#   install.packages(c("tidyverse", "scales", "tidytext"))
+folium>=0.16
+vaderSentiment>=3.3
