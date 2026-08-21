@@ -34,6 +34,27 @@ This is the real-world sequence. Do them in order; don't skip 0–2.
 
 ---
 
+## Data — download
+
+The raw data is **not committed** (it's large and is public data). Download the
+four files below and drop them in a local `Datasets/` folder before running the
+pipeline.
+
+| File | Size | Download |
+|---|---|---|
+| `listings.csv` | ~16 MB | [Google Drive](https://drive.google.com/file/d/1OtEkj7AnnS_Rnyseeb3mLQYETjOa1X5C/view?usp=sharing) |
+| `reviews.csv` | ~91 MB | [Google Drive](https://drive.google.com/file/d/14bK45iDPD7ZkdGJr0K3Je0phLEOBQxam/view?usp=sharing) |
+| `calendar.csv` | ~70 MB | [Google Drive](https://drive.google.com/file/d/1YYzoedTNKAtkeHPVzatfaH41wO4Mmofm/view?usp=sharing) |
+| `neighbourhoods.geojson` | ~0.7 MB | [Google Drive](https://drive.google.com/file/d/1o57TRRQ5IEzGHxJSTo0sm_YTB53LZj6Y/view?usp=drive_link) |
+
+**Original source:** [Inside Airbnb — Get the Data](https://insideairbnb.com/get-the-data/)
+(Twin Cities MSA). The Drive links above are a convenience mirror of that public dataset.
+
+> The pipeline reads `listings` as `.xlsx` by default (`python/config.py`); the
+> Drive copy is `.csv`. Either works — `01_clean.py` handles both price formats.
+
+---
+
 ## What the raw data actually is (verified, not assumed)
 
 | File | Grain | Notes |

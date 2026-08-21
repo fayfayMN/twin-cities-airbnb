@@ -50,13 +50,15 @@ AMENITY_FLAGS = {
 
 def clean_price(series: pd.Series) -> pd.Series:
     """Return price as float, whether it arrives as '$1,200.00' text or numeric.
-    Works on both the raw .csv (text) and this .xlsx (already numeric)."""
-    if series.dtype == object:
-        return (series.astype(str)
-                      .str.replace(r"[$,]", "", regex=True)
-                      .replace({"": None, "nan": None})
-                      .astype(float))
-    return series.astype(float)
+    Works on the raw .csv (text, possibly arrow-string dtype in pandas 3.x) and
+    the .xlsx (already numeric). Use is_numeric_dtype, NOT `== object`, because
+    pandas 3.0 reads text columns as an arrow 'string' dtype, not object."""
+    if pd.api.types.is_numeric_dtype(series):
+        return series.astype(float)
+    return (series.astype(str)
+                  .str.replace(r"[$,]", "", regex=True)
+                  .replace({"": None, "nan": None, "None": None})
+                  .astype(float))
 
 
 def parse_amenities(cell) -> list:
@@ -85,7 +87,7 @@ def bathrooms_to_number(row) -> float:
 
 
 def clean_listings() -> pd.DataFrame:
-    df = pd.read_excel(C.LISTINGS_XLSX)
+    df = C.read_listings()
 
     keep = [
         "id", "host_id", "host_since", "host_is_superhost",

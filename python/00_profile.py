@@ -75,7 +75,7 @@ def main():
 
     # dtype=str on listing_id keeps the huge IDs from being cast to float
     # (the exact bug that corrupted Calendar 2026.csv). Always read IDs as text.
-    listings = pd.read_excel(C.LISTINGS_XLSX)
+    listings = C.read_listings()
     calendar = pd.read_csv(C.CALENDAR_CSV, parse_dates=["date"],
                            dtype={"listing_id": str})
     reviews  = pd.read_csv(C.REVIEWS_CSV, parse_dates=["date"],
@@ -90,7 +90,7 @@ def main():
     flags = ["## Red flags & notes", ""]
 
     price_sample = listings["price"].dropna().head(3).tolist()
-    price_is_text = listings["price"].dtype == object
+    price_is_text = not pd.api.types.is_numeric_dtype(listings["price"])
     print("price dtype:", listings["price"].dtype, "sample:", price_sample)
     if price_is_text:
         flags.append(f"- `price` is TEXT like `{price_sample}` — strip `$`/`,` "

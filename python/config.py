@@ -7,12 +7,35 @@ path in five different scripts.
 from pathlib import Path
 
 # --- Raw data (read-only; never write here, never open these in Excel) ---
-DATA = Path(r"C:\Users\GPU\Documents\Twin Cities Airbnb DATASETS")
+# Portable default: a `Datasets/` folder next to the project (download the files
+# from the links in README.md). Override by setting the AIRBNB_DATA env var.
+import os
+_DEFAULT = Path(__file__).resolve().parent.parent / "Datasets"
+DATA = Path(os.environ.get("AIRBNB_DATA", _DEFAULT))
 
-LISTINGS_XLSX = DATA / "listings.xlsx"
+
+def _listings_path():
+    """Accept listings as .csv OR .xlsx (the Inside Airbnb download is .csv;
+    an Excel re-save is .xlsx). Prefer whichever exists."""
+    for name in ("listings.csv", "listings.xlsx"):
+        if (DATA / name).exists():
+            return DATA / name
+    return DATA / "listings.csv"   # sensible default for error messages
+
+
+LISTINGS      = _listings_path()
+LISTINGS_XLSX = LISTINGS                        # back-compat alias
 CALENDAR_CSV  = DATA / "calendar.csv"          # the INTACT calendar (use this)
 REVIEWS_CSV   = DATA / "reviews.csv"
 GEOJSON       = DATA / "neighbourhoods.geojson"
+
+
+def read_listings(**kwargs):
+    """Read the listings file whether it's .csv (Inside Airbnb) or .xlsx."""
+    import pandas as pd
+    if str(LISTINGS).lower().endswith(".xlsx"):
+        return pd.read_excel(LISTINGS, **kwargs)
+    return pd.read_csv(LISTINGS, low_memory=False, **kwargs)
 
 # NOTE: "Calendar 2026.csv" is deliberately NOT referenced. Excel corrupted it:
 # truncated to 1,048,576 rows, mangled dates, and destroyed listing_id into
