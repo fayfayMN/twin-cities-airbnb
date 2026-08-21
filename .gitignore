@@ -1,0 +1,23 @@
+# --- environments / caches (never commit) ---
+.venv/
+__pycache__/
+*.pyc
+.Rhistory
+.RData
+.DS_Store
+
+# --- raw + large data (NOT committed; download separately from Inside Airbnb) ---
+Datasets/
+*.xlsx
+outputs/reviews_clean.csv
+outputs/calendar_daily.csv
+outputs/calendar_by_listing.csv
+outputs/map_price.html
+outputs/outputs by colab/
+
+# What IS committed (small, portfolio/deploy-ready):
+#   python/  R/  dashboard.py  fees is in python/  README.md  requirements*.txt
+#   outputs/model/*            (trained models + specs)
+#   outputs/figures/*          (EDA charts)
+#   outputs/listings_clean.csv (the app's data)
+#   outputs/data_dictionary.md, outputs/insights_report.md

@@ -1,0 +1,123 @@
+{
+  "numeric": {
+    "accommodates": {
+      "min": 1.0,
+      "max": 16.0,
+      "median": 4.0
+    },
+    "bedrooms": {
+      "min": 1.0,
+      "max": 7.0,
+      "median": 2.0
+    },
+    "bathrooms": {
+      "min": 0.0,
+      "max": 4.775000000000091,
+      "median": 1.0
+    },
+    "minimum_nights": {
+      "min": 1.0,
+      "max": 60.0,
+      "median": 2.0
+    },
+    "n_amenities": {
+      "min": 0.0,
+      "max": 78.0,
+      "median": 47.0
+    }
+  },
+  "categorical": {
+    "room_type": [
+      "Entire home/apt",
+      "Hotel room",
+      "Private room",
+      "Shared room"
+    ],
+    "neighbourhood_cleansed": [
+      "Anoka",
+      "Carver",
+      "Chisago",
+      "Dakota",
+      "Hennepin",
+      "Isanti",
+      "Le Sueur",
+      "Mille Lacs",
+      "Pierce",
+      "Ramsey",
+      "Scott",
+      "Sherburne",
+      "Sibley",
+      "St. Croix",
+      "Washington",
+      "Wright"
+    ]
+  },
+  "bools": [
+    "host_is_superhost",
+    "is_entire_home"
+  ],
+  "amenities": [
+    "amen_wifi",
+    "amen_free_parking",
+    "amen_air_conditioning",
+    "amen_heating",
+    "amen_workspace",
+    "amen_kitchen",
+    "amen_washer",
+    "amen_dryer",
+    "amen_pool",
+    "amen_hot_tub",
+    "amen_ev_charger",
+    "amen_self_checkin",
+    "amen_pets_allowed"
+  ],
+  "price_features": [
+    "accommodates",
+    "bedrooms",
+    "bathrooms",
+    "minimum_nights",
+    "n_amenities",
+    "room_type",
+    "neighbourhood_cleansed",
+    "host_is_superhost",
+    "is_entire_home",
+    "amen_wifi",
+    "amen_free_parking",
+    "amen_air_conditioning",
+    "amen_heating",
+    "amen_workspace",
+    "amen_kitchen",
+    "amen_washer",
+    "amen_dryer",
+    "amen_pool",
+    "amen_hot_tub",
+    "amen_ev_charger",
+    "amen_self_checkin",
+    "amen_pets_allowed"
+  ],
+  "revenue_features": [
+    "price",
+    "accommodates",
+    "bedrooms",
+    "bathrooms",
+    "minimum_nights",
+    "n_amenities",
+    "room_type",
+    "neighbourhood_cleansed",
+    "host_is_superhost",
+    "is_entire_home",
+    "amen_wifi",
+    "amen_free_parking",
+    "amen_air_conditioning",
+    "amen_heating",
+    "amen_workspace",
+    "amen_kitchen",
+    "amen_washer",
+    "amen_dryer",
+    "amen_pool",
+    "amen_hot_tub",
+    "amen_ev_charger",
+    "amen_self_checkin",
+    "amen_pets_allowed"
+  ]
+}

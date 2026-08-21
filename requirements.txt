@@ -1,0 +1,10 @@
+# Python track — install with:  pip install -r requirements.txt
+pandas>=2.0
+openpyxl>=3.1          # read listings.xlsx
+matplotlib>=3.7
+seaborn>=0.13
+folium>=0.16           # interactive maps (03_geo_map.py)
+vaderSentiment>=3.3    # review sentiment (04_review_nlp.py)
+
+# R track (install inside R, not pip):
+#   install.packages(c("tidyverse", "scales", "tidytext"))
