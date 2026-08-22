@@ -1,5 +1,5 @@
 # Twin Cities Airbnb 2026 — EDA Playbook (Python vs. Python→R)
- **[Twin Cities Airbnb Market Dashboard]([url](https://twin-cities-airbnbgit.streamlit.app/))**
+ **[Twin Cities Airbnb Market Dashboard](https://twin-cities-airbnbgit.streamlit.app/))**
 A **reusable, portfolio-quality template** for exploring any raw dataset with no
 business question given up front — applied to the 2026 Inside Airbnb data for the
 Twin Cities (Minneapolis–St. Paul).
