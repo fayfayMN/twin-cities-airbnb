@@ -1,5 +1,5 @@
 # Twin Cities Airbnb — EDA Playbook (Python vs. Python→R)
-
+https://airbnb-real-world-eda-playbook.streamlit.app/
 A **reusable, portfolio-quality template** for exploring any raw dataset with no
 business question given up front — applied to the 2026 Inside Airbnb data for the
 Twin Cities (Minneapolis–St. Paul).
